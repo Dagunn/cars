@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="row mb-3">
+      <div class="col">
+        <h1 class='application'>Cars application</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="search">Find your car</label>
+          <input type="text" class="form-control" id="search" placeholder="Name, model..." v-model='search'>
+        </div>
+        <hr>
+
+      
+          <ul class="list-group">
+          <li v-for='(car, index) in filteredCars' class="list-group-item list-group-item-action pointer" @click='selectCar(index)' 
+          :class="{'active': selectedCarIndex === index}" @click='modalVisible=true'>{{car.name}} - {{car.model}}</li>
+        </ul>
+   
+      </div>
+      <div class="col-md-8 pt-3">
+        <div class="row">
+          <div class="col-md-8">
+            <h2>{{car.name}}</h2>
+            <img v-bind:src="car.image" v-bind:alt="car.name" class="rounded car-img">
+          </div>
+          <div class="col-md-4 pt-3">
+
+            <h5 class='details'>Car details</h5>
+            <ul>
+              <li>Model - <strong>{{car.model}}</strong></li>
+              <li>Year - <strong> {{car.year}}</strong></li>
+              <li>Owner - <strong>{{car.owner}}</strong></li>
+              <li>Price - <strong>{{car.price}}</strong></li>
+        
+            </ul>
+
+             <div class="phone-block">
+            <p v-if='phoneVisible'>{{car.phone}}</p>
+          </div>
+            <button @click="phoneVisible = !phoneVisible" class="btn btn-outline-success mr-3">{{phoneBtnText}}</button>
+            <button class="btn btn-primary" @click="buy">Buy</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row mt-3" v-if="logs.length !== 0">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li v-for="log in logs" class="list-group-item list-group-item-success">{{log.text}}</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+    
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

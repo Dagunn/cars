@@ -1,0 +1,30 @@
+body {
+  background: url("images/fon_8.jpg") no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.application {
+  text-align: center;
+}
+
+.details {
+  text-align: center;
+  margin-right: 50px;
+}
+
+.car-img {
+  height: 300px;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.phone-block {
+  height: 36px;
+}
+/*# sourceMappingURL=style.css.map */
